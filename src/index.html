@@ -33,21 +33,24 @@
                 <p>resposta:</p>
             </div>
  -->
-
-
-
-
         </div>
         <div class="container-fluid bg-body-secondary ">
             <form class="d-flex flex-row p-3 justify-content-evenly" action="">
 
-                <input class="form-control  rounded-5" style="width:100%" type="text" placeholder="Insira sua mensagem"
+                <input 
+                class="form-control  rounded-5" style="width:100%"
+                type="text" 
+                placeholder="Insira sua mensagem"
                 id="input"
                 autocomplete="off"
                 >
                 <input class="btn btn-success rounded-1 btn-lg" type="submit">
             </form>
         </div>
+
+
+
+
 
 
         <script src="/socket.io/socket.io.js"></script>
@@ -57,13 +60,30 @@
             const input = document.getElementById('input')
             
            /*  altereip li para p */
-            socket.on('message', (msg) => {
+             socket.on('message', (msg) => {
                 const li = document.createElement('li')
                 li.textContent = msg
-                message.appendChild(li)
+                message.appendChild(li) 
+
+
+
                /*  p.innerHTML = `<span class="fw-bold">mensagem : ${msg}</span>`;
                 message.appendChild(p); */
-            })
+
+                
+             }) 
+
+           /*  socket.on('message', (msg) => {
+            const li = document.createElement('li');
+            li.textContent = msg;
+            if (msg.startsWith('Eu: ')) {
+             li.style.backgroundColor = 'blue';
+            } else {
+              li.style.backgroundColor = 'green';
+                }
+             message.appendChild(li);
+            }); */
+
 
             document.addEventListener('submit',(e)=>{
                 e.preventDefault();
